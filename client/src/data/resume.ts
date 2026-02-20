@@ -9,7 +9,7 @@ export const profile = {
   subtitle: "6년차 프론트엔드 개발자",
   birth: "1996. 01. 24",
   summary:
-    "TypeScript, React, Next.js 기반의 모던 웹 개발 전문가로, 사용자 경험(UX) 개선과 성능 최적화를 통해 비즈니스 성장에 직접 기여합니다. 핀테크, 인슈어테크, 블록체인 등 다양한 도메인에서의 실무 경험을 바탕으로 복잡한 요구사항을 명료한 UI로 구현합니다.",
+    "TypeScript, React, Next.js 기반의 모던 웹 개발자로, 사용자 경험(UX) 개선과 성능 최적화를 통해 비즈니스 성장에 기여합니다.\n핀테크, 인슈어테크 등 복잡한 도메인 경험을 바탕으로 요구사항을 명료한 UI로 구현하며, 단순한 기능 구현을 넘어 기술 부채를 전략적으로 리팩토링하여 지속 가능한 코드베이스를 유지하는 데 가치를 둡니다.\n특히 개발자 경험(DX) 개선을 위한 인프라 구축에 주력하며, 팀 전체가 비즈니스 로직에만 몰입할 수 있는 안정적인 개발 환경을 설계를 위해 노력합니다.",
   links: {
     lifecatch: "https://lifecatch.co.kr",
     konkrit: "https://konkrit.io",
@@ -25,7 +25,7 @@ export const profile = {
 };
 
 export const coreCompetencies = [
-  "TypeScript와 React, Next.JS 15 App Router를 활용한 모던 JavaScript 개발",
+  "TypeScript와 React, Next.JS 15/16 App Router를 활용한 모던 JavaScript 개발",
   "Turborepo 기반 Monorepo 환경 구축 및 유지보수",
   "Storybook을 활용한 CDD(Component-Driven Development) 및 디자이너 협업",
   "Micro Frontend 아키텍처 설계 및 운용",
@@ -82,10 +82,10 @@ export const skills: SkillCategory[] = [
     category: "Build & Infra",
     skills: [
       { name: "Webpack / Vite", level: 3 },
-      { name: "Turborepo", level: 2 },
+      { name: "Turborepo", level: 3 },
       { name: "GitHub Actions", level: 2 },
       { name: "GitLab Runner", level: 2 },
-      { name: "Docker", level: 1 },
+      { name: "Docker", level: 2 },
       { name: "AWS", level: 1 },
     ],
   },
@@ -154,7 +154,7 @@ export const careers: Career[] = [
           "트래블월렛 서비스 전반의 프론트엔드 개발을 담당하며, 핀테크 서비스 특성에 맞는 안정적이고 확장 가능한 UI 시스템을 구축하고 있습니다.",
         role: "Frontend Developer",
         stacks: [
-          "Next.js 15",
+          "Next.js 15/16 (App Router)",
           "TypeScript",
           "React",
           "TailwindCSS",
@@ -274,7 +274,7 @@ export const careers: Career[] = [
   },
   {
     company: "그린리본",
-    period: "2023.04 ~ 2025.07",
+    period: "2023.04 ~ 2024.07",
     companyDesc:
       "인슈어테크 기반으로 고객의 놓친 보험금을 조회하고 대행 신청을 진행하는 IT 스타트업",
     projects: [
@@ -313,6 +313,10 @@ export const careers: Career[] = [
               {
                 text: "MFE 도입 상세",
                 url: "https://juicy-stick-60e.notion.site/ebd//d94fa79ff26b4fb18636c7a7811c0eb5?pvs=4",
+              },
+              {
+                text: "모듈 Remote 서비스의 제어 상세",
+                url: "https://juicy-stick-60e.notion.site/ebd//Remote-1b0e21e1902641158348a96f32c5341b",
               },
             ],
           },

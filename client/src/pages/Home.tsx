@@ -386,7 +386,7 @@ function HeroSection() {
           </div>
 
           {/* Summary */}
-          <p className="text-base text-slate-600 leading-relaxed mb-10 max-w-2xl border-l-2 border-indigo-200 pl-4">
+          <p className="whitespace-pre-line text-base text-slate-600 leading-relaxed mb-10 max-w-2xl border-l-2 border-indigo-200 pl-4">
             {profile.summary}
           </p>
 
