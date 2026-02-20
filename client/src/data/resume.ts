@@ -1,5 +1,7 @@
 // Resume data for 성찬우 | 6년차 프론트엔드 개발자
 
+import { Task } from "@/components/ui/taskModal";
+
 export const profile = {
   name: "성찬우",
   nameEn: "Sung ChanWoo",
@@ -121,7 +123,7 @@ export interface Project {
   description: string;
   role: string;
   stacks?: string[];
-  tasks: string[];
+  tasks: Task[];
   troubleshootings: TroubleShooting[];
   links?: { text: string; url: string }[];
   note?: string;
@@ -159,15 +161,75 @@ export const careers: Career[] = [
           "React-Query",
         ],
         tasks: [
-          "Server Driven UI(SDUI) 기반 CMS 구축",
-          "Next.js용 정적 타입 세이프 라우터 래핑 라이브러리 개발",
-          "외환 헷징 및 환 리스크 관리 서비스 개발",
-          "Micro Frontend(MFE) 서비스 도입 및 배포, 운용",
-          "트래블월렛 홈페이지 성능 개선",
-          "서비스 이용약관 ISR 기능 개선",
-          "프로모션 랜딩 페이지 CMS 개발",
-          "이의제기 신청 전산화",
-          "백오피스 유지보수",
+          {
+            label: "Server Driven UI(SDUI) 기반 CMS 구축",
+            links: [
+              {
+                text: "컨텐츠 주도 서비스 구축하기",
+                url: "https://juicy-stick-60e.notion.site/ebd//2febc976557e8003a3cdc282fd7134c3",
+              },
+            ],
+          },
+          {
+            label: "Next.js용 정적 타입 세이프 라우터 래핑 라이브러리 개발",
+            links: [
+              {
+                text: "Directory-Based TypeSafe Router 제작",
+                url: "https://juicy-stick-60e.notion.site/ebd//Next-JS-Directory-Based-TypeSafe-Router-2b8bc976557e80ddbf30fa507780067c",
+              },
+            ],
+          },
+          {
+            label: "외환 헷징 및 환 리스크 관리 서비스 개발",
+            links: [
+              {
+                text: "외환 Hedge 환리스크 관리 시스템 구축",
+                url: "https://juicy-stick-60e.notion.site/ebd//Hedge-214bc976557e804dbfe0d7e061be030b?pvs=74",
+              },
+            ],
+          },
+          {
+            label: "Micro Frontend(MFE) 서비스 도입 및 배포, 운용",
+            links: [
+              {
+                text: "Monorepo Backoffice 구조",
+                url: "https://juicy-stick-60e.notion.site/ebd//Monorepo-Backoffice-201bc976557e804195ccc8c8d5f696d8?pvs=74",
+              },
+            ],
+          },
+          {
+            label: "트래블월렛 홈페이지 성능 개선",
+            links: [
+              {
+                text: "travel-wallet.com",
+                url: "https://www.travel-wallet.com/",
+              },
+            ],
+          },
+          {
+            label: "서비스 이용약관 ISR 기능 개선",
+          },
+          {
+            label: "프로모션 랜딩 페이지 CMS Scheme 개발",
+            links: [
+              {
+                text: "프로모션 페이지 CMS Scheme 개발",
+                url: "https://juicy-stick-60e.notion.site/ebd//CMS-Scheme-1f9bc976557e80ca89aaded14c49b5e7?pvs=74",
+              },
+            ],
+          },
+          {
+            label: "이의제기 신청 전산화",
+            links: [
+              {
+                text: "pay.travel-wallet.com",
+                url: "https://pay.travel-wallet.com/",
+              },
+            ],
+          },
+          {
+            label: "백오피스 유지보수",
+          },
         ],
         troubleshootings: [
           {
@@ -177,9 +239,9 @@ export const careers: Career[] = [
             cause:
               "next/image 미사용으로 인한 이미지 용량 과다, 동적 import 미적용으로 인한 초기 번들 사이즈 과다, 렌더링 블로킹 스크립트 존재",
             solution:
-              "1) next/image를 전면 적용하여 WebP 변환 및 lazy loading을 자동화했습니다. 2) bundle-analyzer로 번들 구성을 분석하여 과도하게 큰 라이브러리를 식별하고, 동적 import()를 통해 코드 스플리팅을 적용했습니다. 3) 초기 렌더링에 불필요한 스크립트를 defer/async 처리하여 TTI(Time to Interactive)를 단축했습니다.",
+              "1) next/image를 전면 적용하여 WebP 변환 및 lazy loading을 자동화했습니다.\n2) bundle-analyzer로 번들 구성을 분석하여 과도하게 큰 라이브러리를 식별하고, 동적 import()를 통해 코드 스플리팅을 적용했습니다.\n3) 초기 렌더링에 불필요한 스크립트를 defer/async 처리하여 TTI(Time to Interactive)를 단축했습니다.",
             result:
-              "Lighthouse Performance 점수 20점 이상 향상, LCP 및 FID 지표 개선",
+              "개선 전 p25.0: 590ms / p99: 12.4s → 개선 후 p25.0: 14.1ms / p99: 111ms",
             tags: [
               "Next.js",
               "Performance",
@@ -191,14 +253,20 @@ export const careers: Career[] = [
             title:
               "서비스 이용약관 페이지 ISR(Incremental Static Regeneration) 적용",
             problem:
-              "약관 내용이 변경될 때마다 전체 빌드를 다시 실행해야 했고, SSR 방식으로는 매 요청마다 서버 렌더링이 발생하여 응답 속도가 느렸습니다.",
+              "약관 내용이 변경될 때마다 전체 빌드를 다시 실행해야 했고,\n SSR 방식으로는 매 요청마다 서버 렌더링이 발생하여 응답 속도가 느렸습니다. 또한 안드로이드 앱의 특정 웹뷰에 javascript disabled 환경이 적용되어 빈 화면이 출력되는 문제가 있었습니다.",
             cause:
-              "정적 생성(SSG)과 서버 사이드 렌더링(SSR)의 장단점을 모두 가지는 ISR 전략이 적용되지 않은 상태",
+              "정적 생성(SSG)과 서버 사이드 렌더링(SSR)의 장단점을 모두 가지는 ISR 전략이 적용되지 않은 상태. javascript disabled 웹뷰 환경 미고려.",
             solution:
-              "Next.js의 ISR(revalidate) 옵션을 활용하여 약관 페이지를 정적으로 생성하되, 일정 주기 또는 on-demand revalidation으로 콘텐츠를 갱신하도록 구현했습니다. 약관 변경 시 전체 빌드 없이 해당 페이지만 재생성되도록 설정했습니다.",
+              "ISR을 적용하여 javascript가 일체 없는 순수 HTML로만 서빙되도록 변경했습니다.\n버전 선택자도 순수 HTML과 CSS만으로 작동하도록 개선하여 javascript disabled 환경에서도 정상 작동하도록 구현했습니다.",
             result:
-              "빌드 시간 단축, 페이지 응답 속도 향상, 운영팀의 약관 업데이트 편의성 증대",
+              "빌드 시간 단축, 페이지 응답 속도 향상, 운영팀의 약관 업데이트 편의성 증대, javascript disabled 웹뷰 환경 대응",
             tags: ["Next.js", "ISR", "SSG", "Performance"],
+          },
+        ],
+        links: [
+          {
+            text: "트래블월렛",
+            url: "https://travel-wallet.com",
           },
         ],
       },
@@ -231,15 +299,79 @@ export const careers: Career[] = [
           "Yarn Berry",
         ],
         tasks: [
-          "채팅형 UI/UX 기반 보험금 신청 플랫폼 개발 (전환율 30% 향상)",
-          "마이데이터 사업팀, 은행, 보험사 대상 B2B2C 통합 보험금 신청 플랫폼 구축",
-          "Webpack Module Federation을 통한 Micro Frontend(MFE) 도입",
-          "사용자 메트릭 수집 인프라 구축",
-          "Next.js 기반 서류 발급 대행인 관리 플랫폼 개발",
-          "Turborepo 기반 Monorepo 도입",
-          "디자인 시스템 및 Storybook 도입",
-          "포인트몰 마켓 서비스 구축",
-          "성능 개선 및 UI/UX 개선",
+          {
+            label:
+              "채팅형 UI/UX 기반 보험금 신청 플랫폼 개발 (전환율 30% 향상)",
+          },
+          {
+            label:
+              "마이데이터 사업팀, 은행, 보험사 대상 B2B2C 통합 보험금 신청 플랫폼 구축",
+          },
+          {
+            label: "Webpack Module Federation을 통한 Micro Frontend(MFE) 도입",
+            links: [
+              {
+                text: "MFE 도입 상세",
+                url: "https://juicy-stick-60e.notion.site/ebd//d94fa79ff26b4fb18636c7a7811c0eb5?pvs=4",
+              },
+            ],
+          },
+          {
+            label: "사용자 메트릭 수집 인프라 구축",
+          },
+          {
+            label: "Next.js 기반 서류 발급 대행인 관리 플랫폼 개발",
+            links: [
+              {
+                text: "서류 발급 대행인 플랫폼 상세",
+                url: "https://juicy-stick-60e.notion.site/ebd//4da68b4d61374addb5ddb31fb09f53b4",
+              },
+            ],
+          },
+          {
+            label: "Turborepo 기반 Monorepo 도입",
+            links: [
+              {
+                text: "MonoRepo 도입 상세",
+                url: "https://juicy-stick-60e.notion.site/ebd//Mono-Repo-377978da26e54b06bf17ada570c46e3f?pvs=4",
+              },
+            ],
+          },
+          {
+            label: "디자인 시스템 및 Storybook 도입",
+            links: [
+              {
+                text: "디자인 시스템 구축 상세",
+                url: "https://juicy-stick-60e.notion.site/ebd//4039772bebe24ec1978ca33f2fab8f70",
+              },
+              {
+                text: "멀티 테마 디자인 시스템 개발 상세",
+                url: "https://juicy-stick-60e.notion.site/ebd//53e2bfb140974ba1b0ada264490c5863",
+              },
+              {
+                text: "Storybook 보기",
+                url: "https://storybook.lifecatch.co.kr/",
+              },
+            ],
+          },
+          {
+            label: "포인트몰 마켓 서비스 구축",
+            links: [
+              {
+                text: "point.lifecatch.co.kr",
+                url: "https://point.lifecatch.co.kr/point",
+              },
+            ],
+          },
+          {
+            label: "성능 개선 및 UI/UX 개선",
+            links: [
+              {
+                text: "Lazy Import 웹 렌더링 최적화",
+                url: "https://juicy-stick-60e.notion.site/ebd//Lazy-Import-a01677f68c2148c99df0007b4839d447",
+              },
+            ],
+          },
         ],
         troubleshootings: [
           {
@@ -269,7 +401,7 @@ export const careers: Career[] = [
           {
             title: "B2B2C 다중 납품 환경에서의 커스텀 라우팅 제어",
             problem:
-              "동일한 서비스를 여러 금융기관에 납품하는 B2B2C 구조에서, 각 납품처마다 모듈 완료 후 이동할 화면(홈, 신청 페이지, 앱 종료 등)이 달랐습니다. 매번 납품처 요청에 맞게 코드를 수정하면 유지보수 비용이 급격히 증가하는 문제가 있었습니다.",
+              "동일한 서비스를 여러 금융기관에 납품하는 B2B2C 구조에서, 각 납품처마다 모듈 완료 후 이동할 화면(홈, 신청 페이지, 앱 종료 후의 액션 등)이 달랐습니다. 매번 납품처 요청에 맞게 코드를 수정하면 유지보수 비용이 급격히 증가하는 문제가 있었습니다.",
             cause:
               "서비스 내 라우팅 로직이 납품처별 요구사항에 하드코딩되어 있어, 새로운 납품처 추가 시마다 코드 수정이 필요했습니다.",
             solution:
@@ -315,12 +447,25 @@ export const careers: Career[] = [
           "Ethers.js",
         ],
         tasks: [
-          "전반적인 마크업 (Header, Footer, Button, Page, NFT Image Box)",
-          "Ethers.js를 이용한 MetaMask 지갑 연결 개발",
-          "Ethers.js를 이용한 NFT 전송(transfer) 기능 개발",
-          "NFT 리스트 페이지 제작 및 공용 검색 필터링 로직 개발",
-          "랜딩 페이지 마크업 및 유지보수",
-          "기존 랜딩 페이지 Strapi 기반 Headless CMS 전환 개발",
+          {
+            label:
+              "전반적인 마크업 (Header, Footer, Button, Page, NFT Image Box)",
+          },
+          {
+            label: "Ethers.js를 이용한 MetaMask 지갑 연결 개발",
+          },
+          {
+            label: "Ethers.js를 이용한 NFT 전송(transfer) 기능 개발",
+          },
+          {
+            label: "NFT 리스트 페이지 제작 및 공용 검색 필터링 로직 개발",
+          },
+          {
+            label: "랜딩 페이지 마크업 및 유지보수",
+          },
+          {
+            label: "기존 랜딩 페이지 Strapi 기반 Headless CMS 전환 개발",
+          },
         ],
         troubleshootings: [
           {
@@ -358,7 +503,13 @@ export const careers: Career[] = [
             ],
           },
         ],
-        links: [{ text: "KONKIRT (konkrit.io)", url: "https://konkrit.io" }],
+        links: [
+          { text: "KONKIRT (konkrit.io)", url: "https://konkrit.io" },
+          {
+            text: "관련 기사",
+            url: "https://www.newswire.co.kr/newsRead.php?no=983063",
+          },
+        ],
       },
     ],
   },
@@ -383,9 +534,15 @@ export const careers: Career[] = [
           "React-Hook-Form",
         ],
         tasks: [
-          "전반적인 마크업 개발",
-          "NFT 리스트 호출 및 검색 로직 구현",
-          "NFT 민팅을 위한 메타데이터 서버 전송 기능 구현",
+          {
+            label: "전반적인 마크업 개발",
+          },
+          {
+            label: "NFT 리스트 호출 및 검색 로직 구현",
+          },
+          {
+            label: "NFT 민팅을 위한 메타데이터 서버 전송 기능 구현",
+          },
         ],
         troubleshootings: [
           {
@@ -436,10 +593,21 @@ export const careers: Career[] = [
           "CSS3",
         ],
         tasks: [
-          "ES5, JQuery를 통한 에스원 임직원 차세대 출입시스템 백오피스 개발",
-          "ES5, JSP, JQuery를 통한 에스원 임직원 출입시스템 유지보수성 개발",
-          "에스원 차세대 출입시스템 연계 임직원 전용 모바일 안드로이드 네이티브 앱 유지보수 및 웹뷰 추가 개발",
-          "에스원 차세대 출입시스템 Spring Boot RESTful API 서버 개발",
+          {
+            label:
+              "ES5, JQuery를 통한 에스원 임직원 차세대 출입시스템 백오피스 개발",
+          },
+          {
+            label:
+              "ES5, JSP, JQuery를 통한 에스원 임직원 출입시스템 유지보수 개발",
+          },
+          {
+            label:
+              "에스원 차세대 출입시스템 연계 임직원 전용 모바일 안드로이드 네이티브 앱 유지보수 및 웹뷰 추가 개발",
+          },
+          {
+            label: "에스원 차세대 출입시스템 Spring Boot RESTful API 서버 개발",
+          },
         ],
         troubleshootings: [
           {

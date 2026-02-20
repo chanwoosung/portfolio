@@ -7,6 +7,7 @@
  * - Scroll-triggered fade-in animations via IntersectionObserver
  */
 
+import { TaskList } from "@/components/ui/taskModal";
 import type { SkillLevel, TroubleShooting } from "@/data/resume";
 import {
   careers,
@@ -149,7 +150,7 @@ function TroubleShootingCard({ ts }: { ts: TroubleShooting }) {
               <p className="text-[0.7rem] font-bold text-emerald-600 uppercase tracking-widest mb-1">
                 해결 방법
               </p>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap">
                 {ts.solution}
               </p>
             </div>
@@ -523,20 +524,22 @@ function CareerSection() {
         <AnimatedSection className="mb-12">
           <div className="flex flex-wrap gap-3">
             {careers.map((c, i) => (
-              <div
-                key={i}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border ${
-                  c.isCurrentJob
-                    ? "bg-indigo-50 border-indigo-200 text-indigo-700"
-                    : "bg-white border-slate-200 text-slate-600"
-                }`}
-              >
-                {c.isCurrentJob && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                )}
-                <span className="font-bold">{c.company}</span>
-                <span className="text-slate-400 font-mono">{c.period}</span>
-              </div>
+              <a href={`#${c.company}`}>
+                <div
+                  key={i}
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border ${
+                    c.isCurrentJob
+                      ? "bg-indigo-50 border-indigo-200 text-indigo-700"
+                      : "bg-white border-slate-200 text-slate-600"
+                  }`}
+                >
+                  {c.isCurrentJob && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  )}
+                  <span className="font-bold">{c.company}</span>
+                  <span className="text-slate-400 font-mono">{c.period}</span>
+                </div>
+              </a>
             ))}
           </div>
         </AnimatedSection>
@@ -556,7 +559,7 @@ function CareerSection() {
           <div className="space-y-16">
             {careers.map((career, ci) => (
               <AnimatedSection key={ci} delay={ci * 80}>
-                <div className="lg:flex gap-0">
+                <div className="lg:flex gap-0 pt-15" id={career.company}>
                   {/* Left: Company info */}
                   <div className="lg:w-[220px] lg:pr-10 mb-5 lg:mb-0 flex-shrink-0">
                     <div className="lg:text-right">
@@ -650,17 +653,7 @@ function CareerSection() {
                             <p className="text-[0.65rem] font-bold text-slate-400 uppercase tracking-widest mb-2.5">
                               주요 업무
                             </p>
-                            <ul className="space-y-1.5">
-                              {project.tasks.map((task, ti) => (
-                                <li
-                                  key={ti}
-                                  className="flex items-start gap-2.5 text-sm text-slate-700"
-                                >
-                                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-300 flex-shrink-0 mt-1.5" />
-                                  {task}
-                                </li>
-                              ))}
-                            </ul>
+                            <TaskList tasks={project.tasks} />
                           </div>
 
                           {/* Troubleshootings */}
