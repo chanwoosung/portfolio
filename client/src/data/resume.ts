@@ -528,7 +528,7 @@ export const careers: Career[] = [
         name: "NFT 마켓플레이스 'Windee' 및 'PIXELIA' A to Z 개발 및 배포",
         description:
           "이더리움 기반의 NFT 마켓플레이스 두 개를 처음부터 설계하고 개발했습니다. Windee는 모던 JavaScript로, PIXELIA는 React로 제작된 NFT 아트워크 마켓플레이스입니다.",
-        role: "Frontend Developer",
+        role: "Frontend / Backend Developer",
         stacks: [
           "React 18",
           "JavaScript ES6",
